@@ -1,0 +1,19 @@
+{
+  "name": "gtm-back",
+  "version": "0.1.0",
+  "description": "Back end for Guess the Movie application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "config": "^3.0.0",
+    "eslint": "^5.10.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.15"
+  }
+}
