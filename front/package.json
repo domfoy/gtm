@@ -1,0 +1,60 @@
+{
+  "name": "gtm-front",
+  "version": "0.1.0",
+  "description": "Front end for Guess the Movie application",
+  "repository": {
+    "type": "git"
+  },
+  "scripts": {
+    "webpack": "webpack",
+    "srv": "./node_modules/.bin/json-server --watch fake-api/db.json",
+    "webpack-dev-server": "./node_modules/.bin/webpack-dev-server",
+    "prod": "npm run webpack -- --env.mode production",
+    "prod:analyze": "npm run prod -- --env.presets analyze",
+    "prod:compress": "npm run prod -- --env.presets compress",
+    "dev": "npm run webpack-dev-server -- --env.mode development",
+    "dashboard-dev": "webpack-dashboard --title 'Elm Dev Server' -- npm run webpack-dev-server -- --env.mode development",
+    "elm-analyse": "elm-analyse -s -o",
+    "preprod": "rimraf dist",
+    "lint": "stylelint src/assets/styles"
+  },
+  "license": "MIT",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^9.1.0",
+    "bootstrap": "^4.1.3",
+    "compression-webpack-plugin": "^1.1.12",
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "elm-analyse": "^0.15.0",
+    "elm-hot-webpack-loader": "^1.0.1",
+    "elm-webpack-loader": "^5.0.0",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.0.6",
+    "imagemin-webpack-plugin": "^2.1.5",
+    "jquery": "^3.3.1",
+    "json-server": "^0.14.0",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-webpack-plugin": "^0.10.4",
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "webpack": "^4.17.1",
+    "webpack-bundle-analyzer": "^2.11.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dashboard": "^2.0.0",
+    "webpack-dev-server": "^3.1.7",
+    "webpack-merge": "^4.1.4"
+  }
+}
