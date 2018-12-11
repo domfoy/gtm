@@ -50,7 +50,7 @@ async function getMovies(movieRefs) {
 async function processMovie(movieRef) {
   const {data: page} =  await request(`/title/${movieRef}`);
   const parsedInfo = parsePage(page);
-  const movieInfo = {...parsedInfo, movieRef};
+  const movieInfo = {...parsedInfo, ref: movieRef};
 
   if (!movieInfo.moreTagLinesLink) {
     return movieInfo;
