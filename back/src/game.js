@@ -4,31 +4,41 @@ const path = require('path');
 const {movies} = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../fetch-entries/data/movies.json')));
 
 const defaults = {
+  sockets: [],
   interval: 10 // Time interval between entries. In seconds.
 };
 
 class Game {
   constructor(input) {
     Object.assign(this, defaults, input);
+    setInterval(addEntry.bind(this), this.interval * 1000);
   }
 
-  init() {
-    setInterval(addEntry.bind(this), this.interval);
+  addClient(socket) {
+    this.sockets.push(socket);
   }
 }
 
 function addEntry() {
-  const newEntryIndex = Math.floor(Math.random() * movies.length);
-  const entry = movies[newEntryIndex];
+  if (!this.sockets.length) {
+    console.log('No player connected');
 
-  this.addEntry(formatEntry(entry));
+    return;
+  }
+
+  const newEntryIndex = Math.floor(Math.random() * movies.length);
+  console.log('new entry index', newEntryIndex);
+  const entry = movies[newEntryIndex];
+  // console.log('send new entry', entry);
+
+  for (const socket of this.sockets) {
+    this.addNewEntry(socket, formatEntry(entry));
+  }
 }
 
 function formatEntry(entry) {
   return {
-    tagLines: entry.tagLines.en,
-    direction: entry.direction,
-    cast: entry.cast,
+    tagLines: entry.tagLines,
     year: entry.year
   };
 }

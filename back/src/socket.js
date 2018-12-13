@@ -1,5 +1,9 @@
 const Game = require('./game');
 
+const game = new Game({
+  addNewEntry: onNewEntry
+});
+
 function socketHandler(io) {
   if (!io) {
     throw new Error('no io');
@@ -10,12 +14,7 @@ function socketHandler(io) {
 async function handleConnection(socket) {
   console.log('A user is connected');
 
-  const game = new Game({
-    socket,
-    addNewEntry: onNewEntry
-  });
-
-  game.init();
+  game.addClient(socket);
 }
 
 function onNewEntry(socket, entry) {

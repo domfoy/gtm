@@ -7,11 +7,11 @@ const app = Elm.Main.init({
     node: document.getElementById('elm-node')
 });
 
-// app.ports.createSocket.subscribe(() => {
-//     const socket = io('http://localhost:8082');
-//
-//     socket.on('server:new_entry', (entry) => {
-//         console.log('Entry received', entry);
-//         app.ports.newEntry.send(entry);
-//     });
-// });
+app.ports.createSocket.subscribe(() => {
+    const socket = io('http://localhost:8081');
+
+    socket.on('server:new_entry', (entry) => {
+        console.log('Entry received', entry);
+        app.ports.newEntry.send(entry);
+    });
+});
